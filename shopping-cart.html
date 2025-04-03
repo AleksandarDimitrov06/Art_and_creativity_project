@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вашата кошница | THE ART CORNER</title>
+  <link rel="stylesheet" href="homepage.css">
+  <link rel="stylesheet" href="products.css">
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Лого на магазина">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Начало</a></li>
+          <li><a href="products.html">Продукти</a></li>
+          <li><a href="shopping-cart.html" class="active">Кошница</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-title">
+      <div class="container">
+        <h1>Вашата кошница</h1>
+      </div>
+    </section>
+
+    <section class="cart-section">
+      <div class="container">
+        <div class="cart-container">
+          <!-- Кошницата с продукти -->
+          <div class="cart-with-items">
+            <div class="cart-header">
+              <div class="product-info-header">Продукт</div>
+              <div class="product-price-header">Цена</div>
+              <div class="product-quantity-header">Количество</div>
+              <div class="product-total-header">Общо</div>
+              <div class="product-remove-header"></div>
+            </div>
+
+            <div class="cart-items">
+              <!-- Продукт в кошницата -->
+              <div class="cart-item">
+                <div class="product-info">
+                  <div class="product-image">
+                    <img src="images/BoiZaRisuvane.png" alt="Акрилни бои">
+                  </div>
+                  <div class="product-details">
+                    <h3>Акрилни бои - Професионален комплект</h3>
+                    <p class="product-variant">Размер: Малък (24 цвята)</p>
+                    <p class="product-code">Артикул: ACR-PRO-24</p>
+                  </div>
+                </div>
+                <div class="product-price">25.99 лв</div>
+                <div class="product-quantity">
+                  <div class="quantity-selector">
+                    <button class="qty-btn decrease">-</button>
+                    <input type="number" value="1" min="1" max="10" class="qty-input">
+                    <button class="qty-btn increase">+</button>
+                  </div>
+                </div>
+                <div class="product-total">25.99 лв</div>
+                <div class="product-remove">
+                  <button class="remove-btn">✕</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="cart-actions">
+              <div class="cart-coupon">
+                <input type="text" placeholder="Промо код" class="coupon-input">
+                <button class="btn apply-coupon">Приложи</button>
+              </div>
+              <button class="btn update-cart">Обнови кошницата</button>
+            </div>
+          </div>
+
+          <div class="cart-summary">
+            <h2>Резюме на поръчката</h2>
+            <div class="summary-row">
+              <span>Междинна сума:</span>
+              <span>25.99 лв</span>
+            </div>
+            <div class="summary-row">
+              <span>Доставка:</span>
+              <span>5.00 лв</span>
+            </div>
+            <div class="summary-row total">
+              <span>Общо:</span>
+              <span>30.99 лв</span>
+            </div>
+            <button class="btn checkout-btn">Продължи към плащане</button>
+            <a href="products.html" class="continue-shopping">Продължи пазаруването</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p>© 2025 THE ART CORNER</p>
+      <ul class="social-links">
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    // Опростена функционалност за кошницата
+    document.addEventListener('DOMContentLoaded', function() {
+      const decreaseBtn = document.querySelector('.qty-btn.decrease');
+      const increaseBtn = document.querySelector('.qty-btn.increase');
+      const qtyInput = document.querySelector('.qty-input');
+      const priceElement = document.querySelector('.product-price');
+      const totalElement = document.querySelector('.product-total');
+      const summarySubtotalElement = document.querySelector('.summary-row:first-child span:last-child');
+      const summaryTotalElement = document.querySelector('.summary-row.total span:last-child');
+      
+      // Цена на продукта
+      const productPrice = 25.99;
+      const shippingCost = 5.00;
+      
+      // Функция за обновяване на общата сума
+      function updateTotal() {
+        const quantity = parseInt(qtyInput.value);
+        const total = (productPrice * quantity).toFixed(2);
+        
+        totalElement.textContent = total + ' лв';
+        summarySubtotalElement.textContent = total + ' лв';
+        
+        const finalTotal = (parseFloat(total) + shippingCost).toFixed(2);
+        summaryTotalElement.textContent = finalTotal + ' лв';
+      }
+      
+      // Намаляване на количеството
+      decreaseBtn.addEventListener('click', () => {
+        if (qtyInput.value > 1) {
+          qtyInput.value = parseInt(qtyInput.value) - 1;
+          updateTotal();
+        }
+      });
+      
+      // Увеличаване на количеството
+      increaseBtn.addEventListener('click', () => {
+        if (qtyInput.value < 10) {
+          qtyInput.value = parseInt(qtyInput.value) + 1;
+          updateTotal();
+        }
+      });
+      
+      // При промяна на количеството директно в полето
+      qtyInput.addEventListener('change', () => {
+        if (qtyInput.value < 1) qtyInput.value = 1;
+        if (qtyInput.value > 10) qtyInput.value = 10;
+        updateTotal();
+      });
+    });
+  </script>
+</body>
+</html> 

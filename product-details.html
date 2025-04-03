@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Акрилни бои - Професионален комплект | THE ART CORNER</title>
+  <link rel="stylesheet" href="homepage.css">
+  <link rel="stylesheet" href="product-details.css">
+</head>
+<body>
+
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Лого на магазина">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Начало</a></li>
+          <li><a href="products.html">Продукти</a></li>
+          <li><a href="shopping-cart.html">Кошница</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="product-path">
+      <div class="container">
+        <ul class="breadcrumbs">
+          <li><a href="index.html">Начало</a></li>
+          <li><a href="products.html">Продукти</a></li>
+          <li class="current">Акрилни бои - Професионален комплект</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="product-details">
+      <div class="container">
+        <div class="product-layout">
+          <div class="product-gallery">
+            <div class="main-image">
+              <img src="images/BoiZaRisuvane.png" alt="Акрилни бои - Професионален комплект" id="main-product-image">
+            </div>
+          </div>
+          
+          <div class="product-info">
+            <h1>Акрилни бои - Професионален комплект</h1>
+            <p class="product-price">25.99 лв</p>
+            <div class="product-status">
+              <span class="in-stock">✓ Наличен</span>
+              <span class="delivery-time">Доставка: 1-3 работни дни</span>
+            </div>
+            
+            <div class="product-description">
+              <p>Висококачествен комплект от професионални акрилни бои, специално проектиран за художни, които търсят наситени цветове и дълготраен ефект. Идеален както за начинаещи, така и за опитни творци.</p>
+              
+              <ul>
+                <li>24 ярки цвята в туби по 20 мл</li>
+                <li>Нетоксична формула на водна основа</li>
+                <li>Висока пигментация и отлична покривност</li>
+                <li>Бързо съхнене и трайност</li>
+              </ul>
+            </div>
+            
+            <div class="variation-group">
+              <label>Размер:</label>
+              <div class="variation-options">
+                <button class="variation-btn active">Малък (24 цвята)</button>
+                <button class="variation-btn">Среден (36 цвята)</button>
+                <button class="variation-btn">Голям (48 цвята)</button>
+              </div>
+            </div>
+            
+            <div class="product-actions">
+              <div class="quantity-selector">
+                <button class="qty-btn decrease">-</button>
+                <input type="number" value="1" min="1" max="10" class="qty-input">
+                <button class="qty-btn increase">+</button>
+              </div>
+              <button class="btn add-to-cart-btn">Добави в кошницата</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p>© 2025 THE ART CORNER</p>
+      <ul class="social-links">
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Twitter</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    // Функционалност за бутоните за количество
+    const decreaseBtn = document.querySelector('.qty-btn.decrease');
+    const increaseBtn = document.querySelector('.qty-btn.increase');
+    const qtyInput = document.querySelector('.qty-input');
+    
+    decreaseBtn.addEventListener('click', () => {
+      if (qtyInput.value > 1) {
+        qtyInput.value = parseInt(qtyInput.value) - 1;
+      }
+    });
+    
+    increaseBtn.addEventListener('click', () => {
+      if (qtyInput.value < 10) {
+        qtyInput.value = parseInt(qtyInput.value) + 1;
+      }
+    });
+    
+    // Функционалност за бутоните за вариации
+    document.querySelectorAll('.variation-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.variation-btn').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html> 
