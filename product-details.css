@@ -217,6 +217,7 @@ footer {
   justify-content: center;
   align-items: center;
   height: 40px;
+  cursor: pointer;
 }
 
 /* Адаптивен дизайн */
