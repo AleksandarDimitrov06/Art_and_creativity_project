@@ -35,7 +35,6 @@
     <section class="cart-section">
       <div class="container">
         <div class="cart-container">
-          <!-- Кошницата с продукти -->
           <div class="cart-with-items">
             <div class="cart-header">
               <div class="product-info-header">Продукт</div>
@@ -46,7 +45,6 @@
             </div>
 
             <div class="cart-items">
-              <!-- Продукт в кошницата -->
               <div class="cart-item">
                 <div class="product-info">
                   <div class="product-image">
@@ -117,7 +115,6 @@
 
   <script src="scripts.js"></script>
   <script>
-    // Опростена функционалност за кошницата
     document.addEventListener('DOMContentLoaded', function() {
       const decreaseBtn = document.querySelector('.qty-btn.decrease');
       const increaseBtn = document.querySelector('.qty-btn.increase');
@@ -127,11 +124,9 @@
       const summarySubtotalElement = document.querySelector('.summary-row:first-child span:last-child');
       const summaryTotalElement = document.querySelector('.summary-row.total span:last-child');
       
-      // Цена на продукта
       const productPrice = 25.99;
       const shippingCost = 5.00;
       
-      // Функция за обновяване на общата сума
       function updateTotal() {
         const quantity = parseInt(qtyInput.value);
         const total = (productPrice * quantity).toFixed(2);
@@ -143,7 +138,6 @@
         summaryTotalElement.textContent = finalTotal + ' лв';
       }
       
-      // Намаляване на количеството
       decreaseBtn.addEventListener('click', () => {
         if (qtyInput.value > 1) {
           qtyInput.value = parseInt(qtyInput.value) - 1;
@@ -151,7 +145,6 @@
         }
       });
       
-      // Увеличаване на количеството
       increaseBtn.addEventListener('click', () => {
         if (qtyInput.value < 10) {
           qtyInput.value = parseInt(qtyInput.value) + 1;
@@ -159,7 +152,6 @@
         }
       });
       
-      // При промяна на количеството директно в полето
       qtyInput.addEventListener('change', () => {
         if (qtyInput.value < 1) qtyInput.value = 1;
         if (qtyInput.value > 10) qtyInput.value = 10;

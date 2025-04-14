@@ -1,8 +1,6 @@
-
 document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('header');
   const scrollThreshold = 100; 
-
   
   function handleScroll() {
     if (window.scrollY > scrollThreshold) {
@@ -11,10 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
       header.classList.remove('header-scrolled');
     }
   }
-
-
+  
   window.addEventListener('scroll', handleScroll);
   
- 
   handleScroll();
 }); 

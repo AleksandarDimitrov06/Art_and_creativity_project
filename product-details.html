@@ -100,7 +100,6 @@
 
   <script src="scripts.js"></script>
   <script>
-    // Функционалност за бутоните за количество
     const decreaseBtn = document.querySelector('.qty-btn.decrease');
     const increaseBtn = document.querySelector('.qty-btn.increase');
     const qtyInput = document.querySelector('.qty-input');
@@ -117,7 +116,6 @@
       }
     });
     
-    // Функционалност за бутоните за вариации
     document.querySelectorAll('.variation-btn').forEach(button => {
       button.addEventListener('click', () => {
         document.querySelectorAll('.variation-btn').forEach(btn => btn.classList.remove('active'));
